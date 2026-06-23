@@ -4,7 +4,7 @@ import type { ChatRequest, ChatResponse, HistoryEntry } from "@/types";
 // Requests are proxied through Next.js (/backend/* → FastAPI) to avoid CORS.
 const api = axios.create({
   baseURL: "/backend",
-  timeout: 45_000,
+  timeout: 90_000,
   headers: { "Content-Type": "application/json" },
 });
 
