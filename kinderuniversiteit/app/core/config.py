@@ -83,6 +83,9 @@ class Settings(BaseSettings):
     # Set True only for local debugging; never in production (logs every query).
     database_echo: bool = False
 
+    # ── AI Provider ──────────────────────────────────────────────────────────
+    ai_provider: Literal["openai", "anthropic"] = "openai"
+
     # ── OpenAI ───────────────────────────────────────────────────────────────
     openai_api_key: str = ""
     # Optional base URL — override to use any OpenAI-compatible provider.
@@ -95,6 +98,12 @@ class Settings(BaseSettings):
     openai_temperature: float = 0.3
     # Per-request HTTP timeout in seconds.
     openai_timeout: float = 30.0
+
+    # ── Anthropic ────────────────────────────────────────────────────────────
+    anthropic_api_key: str = ""
+    anthropic_model: str = "claude-3-haiku-20240307"
+    anthropic_max_tokens: int = 1024
+    anthropic_temperature: float = 0.3
 
     # ── ChromaDB ─────────────────────────────────────────────────────────────
     # Remote mode  : set CHROMA_HOST + CHROMA_PORT  (uses HttpClient)
@@ -138,9 +147,9 @@ class Settings(BaseSettings):
     def _normalise_log_level(cls, v: object) -> str:
         return str(v).upper()
 
-    @field_validator("openai_api_key")
+    @field_validator("openai_api_key", "anthropic_api_key")
     @classmethod
-    def _validate_openai_key(cls, v: str) -> str:
+    def _validate_api_key(cls, v: str) -> str:
         # Allow empty key in development/demo mode; warn in production via model validator.
         return v
 
@@ -210,10 +219,15 @@ class Settings(BaseSettings):
 
         errors: list[str] = []
 
-        if not self.openai_api_key.startswith(("sk-", "sk-proj-")):
+        if self.ai_provider == "openai" and not self.openai_api_key.startswith(("sk-", "sk-proj-")):
             errors.append(
                 "OPENAI_API_KEY does not look like a valid OpenAI key "
                 "(must start with 'sk-' or 'sk-proj-')"
+            )
+        elif self.ai_provider == "anthropic" and not self.anthropic_api_key.startswith("sk-ant-"):
+            errors.append(
+                "ANTHROPIC_API_KEY does not look like a valid Anthropic key "
+                "(must start with 'sk-ant-')"
             )
 
         if not self.manychat_api_key:
@@ -288,12 +302,17 @@ class Settings(BaseSettings):
             "log_level": self.app_log_level,
             "log_format": self.effective_log_format,
             "log_file_path": self.log_file_path or "<stdout only>",
+            "ai_provider": self.ai_provider,
             "openai_model": self.openai_model,
             "openai_embedding_model": self.openai_embedding_model,
             "openai_api_key": _mask(self.openai_api_key),
             "openai_temperature": self.openai_temperature,
             "openai_max_tokens": self.openai_max_tokens,
             "openai_timeout": self.openai_timeout,
+            "anthropic_model": self.anthropic_model,
+            "anthropic_api_key": _mask(self.anthropic_api_key),
+            "anthropic_temperature": self.anthropic_temperature,
+            "anthropic_max_tokens": self.anthropic_max_tokens,
             "manychat_api_key": _mask(self.manychat_api_key),
             "manychat_base_url": self.manychat_base_url,
             "database_url": db_url_safe,

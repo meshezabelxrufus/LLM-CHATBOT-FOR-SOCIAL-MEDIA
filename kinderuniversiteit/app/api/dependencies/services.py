@@ -15,6 +15,7 @@ from app.api.dependencies.database import get_session
 from app.application.interfaces.analytics_repository import IAnalyticsRepository
 from app.application.services.conversation_memory_service import ConversationMemoryService
 from app.application.use_cases.handle_incoming_message import HandleIncomingMessage
+from app.infrastructure.ai.anthropic.ai_service import AnthropicService
 from app.infrastructure.ai.openai.ai_service import OpenAIService
 from app.infrastructure.ai.rag.knowledge_base_service import ChromaKnowledgeBase
 from app.infrastructure.database.repositories.analytics_repository import SQLAnalyticsRepository
@@ -23,6 +24,8 @@ from app.infrastructure.database.repositories.conversation_repository import SQL
 from app.infrastructure.database.repositories.escalation_repository import SQLEscalationRepository
 from app.infrastructure.database.repositories.message_repository import SQLMessageRepository
 from app.prompts.prompt_manager import PromptManager
+from app.core.config import settings
+from app.application.interfaces.ai_service import IAIService
 
 
 def get_knowledge_base() -> ChromaKnowledgeBase:
@@ -36,7 +39,9 @@ def get_prompt_manager() -> PromptManager:
 def get_ai_service(
     kb: ChromaKnowledgeBase = Depends(get_knowledge_base),
     pm: PromptManager = Depends(get_prompt_manager),
-) -> OpenAIService:
+) -> IAIService:
+    if settings.ai_provider == "anthropic":
+        return AnthropicService(knowledge_base=kb, prompt_manager=pm)
     return OpenAIService(knowledge_base=kb, prompt_manager=pm)
 
 
