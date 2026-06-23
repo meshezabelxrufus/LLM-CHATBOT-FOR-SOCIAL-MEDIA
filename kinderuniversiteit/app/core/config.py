@@ -129,6 +129,8 @@ class Settings(BaseSettings):
     crm_api_key: str = ""
     crm_base_url: str = ""
 
+    frontend_url: str = ""
+
     # ── Field validators ─────────────────────────────────────────────────────
 
     @field_validator("app_log_level", mode="before")

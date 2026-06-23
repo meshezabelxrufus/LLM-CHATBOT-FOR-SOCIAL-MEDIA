@@ -28,9 +28,13 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
+    origins = ["*"] if not settings.is_production else []
+    if settings.frontend_url:
+        origins.append(settings.frontend_url)
+
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"] if not settings.is_production else [],
+        allow_origins=origins,
         allow_methods=["POST", "GET"],
         allow_headers=["*"],
     )

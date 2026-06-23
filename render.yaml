@@ -9,3 +9,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0
+      - key: FRONTEND_URL
+        value: https://demo-frontend-3m8mzjxtl-meshezabel92-8290s-projects.vercel.app
