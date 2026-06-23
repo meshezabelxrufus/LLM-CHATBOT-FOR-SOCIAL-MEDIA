@@ -1,0 +1,8 @@
+De volgende informatie is opgehaald uit de kennisbank. Gebruik deze als basis voor je antwoord.
+
+{% for chunk in chunks %}
+--- [Bron: {{ chunk.metadata.get('source_file', 'kennisbank') }}{% if chunk.metadata.get('page_number') %}, pagina {{ chunk.metadata['page_number'] }}{% endif %} | relevantie: {{ "%.0f"|format(chunk.similarity * 100) }}%] ---
+{{ chunk.content }}
+{% endfor %}
+
+Baseer je antwoord uitsluitend op bovenstaande informatie. Als de informatie onvolledig is, geef dit dan aan.

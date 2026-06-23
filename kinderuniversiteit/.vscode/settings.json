@@ -1,0 +1,9 @@
+{
+  "python.defaultInterpreterPath": "/Users/abdulwaseyhussain/Downloads/gavin/kinderuniversiteit/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "/Users/abdulwaseyhussain/Downloads/gavin/kinderuniversiteit"
+  ],
+  "[python]": {
+    "editor.formatOnSave": true
+  }
+}

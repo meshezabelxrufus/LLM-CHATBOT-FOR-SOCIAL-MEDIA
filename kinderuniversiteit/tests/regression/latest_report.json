@@ -1,0 +1,187 @@
+{
+  "generated_at": "2026-06-23T12:23:20.440646+00:00",
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0
+  },
+  "results": [
+    {
+      "id": "GREET-001",
+      "category": "GREETING",
+      "description": "Dutch greeting — hallo",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 11848.1,
+      "failures": [],
+      "reply_preview": "Hallo! 👋 Welkom bij Kinderuniversiteit! \n\nHoe kan ik je vandaag helpen? Of heb je vragen over onze programma's, inschrijving of iets anders?"
+    },
+    {
+      "id": "GREET-002",
+      "category": "GREETING",
+      "description": "English 'Hello!' — single ambiguous word → system prompt defaults to Dutch",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 1499.4,
+      "failures": [],
+      "reply_preview": "Hallo! 👋\n\nWelkom bij Kinderuniversiteit! Hoe kan ik je vandaag helpen? Of ben je liever in het Engels? 😊"
+    },
+    {
+      "id": "GREET-005",
+      "category": "GREETING",
+      "description": "Clearly English greeting — full sentence forces English response",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 8492.6,
+      "failures": [],
+      "reply_preview": "Hello! Of course, I'm happy to help you in English. 😊\n\nWhat would you like to know about our programmes? Feel free to ask about enrolment, courses, schedules, locations, or anything else — I'm here to"
+    },
+    {
+      "id": "GREET-003",
+      "category": "GREETING",
+      "description": "Dutch good morning",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 1531.0,
+      "failures": [],
+      "reply_preview": "Goedemorgen! 👋 \n\nWelkom bij Kinderuniversiteit. Hoe kan ik je vandaag helpen? Of heb je vragen over onze programma's, inschrijving of iets anders?"
+    },
+    {
+      "id": "GREET-004",
+      "category": "GREETING",
+      "description": "'Good morning' — short phrase, ambiguous → Dutch default is correct",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 1738.2,
+      "failures": [],
+      "reply_preview": "Goedemorgen! 👋\n\nWelkom bij Kinderuniversiteit. Hoe kan ik je vandaag helpen? Of heb je vragen over onze programma's, inschrijvingen of iets anders?"
+    },
+    {
+      "id": "GREET-006",
+      "category": "GREETING",
+      "description": "Unambiguous English morning greeting — full sentence → must reply in English",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 2764.0,
+      "failures": [],
+      "reply_preview": "Good morning! I'd be happy to help you with information about our holiday camps. \n\n**Kinderuniversiteit offers week-long holiday programmes for children aged 6 to 16** during school breaks: autumn, Ch"
+    },
+    {
+      "id": "PAY-STATUS-001",
+      "category": "PAYMENT_STATUS",
+      "description": "Payment received? — Dutch (mandatory escalation)",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 1233.8,
+      "failures": [],
+      "reply_preview": "Bedankt voor je bericht. Ons team controleert de betaling en neemt zo snel mogelijk contact met je op.\n\n```"
+    },
+    {
+      "id": "PAY-STATUS-002",
+      "category": "PAYMENT_STATUS",
+      "description": "Did you receive my payment? — English (mandatory escalation)",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 1414.3,
+      "failures": [],
+      "reply_preview": "Thank you for your message. Our team will verify the payment and get back to you shortly.\n\n```"
+    },
+    {
+      "id": "PAY-STATUS-003",
+      "category": "PAYMENT_STATUS",
+      "description": "Is my registration confirmed after payment? — English",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 5719.7,
+      "failures": [],
+      "reply_preview": "Thank you for your message. Our team will verify the payment and get back to you shortly.\n\n```"
+    },
+    {
+      "id": "BANK-001",
+      "category": "BANK_DETAILS",
+      "description": "Bank account details request — English",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 6384.4,
+      "failures": [],
+      "reply_preview": "Of course! Here are Kinderuniversiteit's bank details:\n\n**IBAN:** NL91 ABNA 0417 1643 00  \n**BIC:** ABNANL2A  \n**Bank:** ABN AMRO\n\nWhen you make the transfer, please include your child's full name and"
+    },
+    {
+      "id": "BANK-002",
+      "category": "BANK_DETAILS",
+      "description": "Bank account details — Dutch",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 5894.0,
+      "failures": [],
+      "reply_preview": "Bedankt voor je vraag! Hier zijn de bankgegevens van Kinderuniversiteit:\n\n**IBAN:** NL91 ABNA 0417 1643 00  \n**BIC:** ABNANL2A  \n**Bank:** ABN AMRO\n\n**Belangrijk:** Vermeld bij je betaling altijd de *"
+    },
+    {
+      "id": "FIN-001",
+      "category": "FINANCIAL_INFO",
+      "description": "Invoice request — English (escalate)",
+      "endpoint": "demo",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 2497.7,
+      "failures": [],
+      "reply_preview": "Thank you for your message. For invoice requests and financial documentation, I'll need to connect you with our team — they handle all billing records and can send you the invoice directly.\n\nA colleag"
+    },
+    {
+      "id": "WBHK-001",
+      "category": "WEBHOOK_INVALID",
+      "description": "No HMAC signature → always 401 (auth runs before payload parsing)",
+      "endpoint": "webhook",
+      "passed": true,
+      "http_status": 401,
+      "duration_ms": 12.5,
+      "failures": [],
+      "reply_preview": "{'detail': 'Invalid webhook signature'}"
+    },
+    {
+      "id": "WBHK-002",
+      "category": "WEBHOOK_INVALID",
+      "description": "Unknown channel identifier + no signature → 401 (auth runs first)",
+      "endpoint": "webhook",
+      "passed": true,
+      "http_status": 401,
+      "duration_ms": 3.3,
+      "failures": [],
+      "reply_preview": "{'detail': 'Invalid webhook signature'}"
+    },
+    {
+      "id": "WBHK-003",
+      "category": "WEBHOOK_INVALID",
+      "description": "Empty JSON body + no signature → 401",
+      "endpoint": "webhook",
+      "passed": true,
+      "http_status": 401,
+      "duration_ms": 7.0,
+      "failures": [],
+      "reply_preview": "{'detail': 'Invalid webhook signature'}"
+    },
+    {
+      "id": "HEALTH-001",
+      "category": "HEALTH",
+      "description": "Health endpoint returns 200",
+      "endpoint": "health",
+      "passed": true,
+      "http_status": 200,
+      "duration_ms": 64.0,
+      "failures": [],
+      "reply_preview": "{'status': 'healthy', 'dependencies': {'database': 'ok', 'redis': 'ok', 'chroma': 'ok'}}"
+    }
+  ]
+}

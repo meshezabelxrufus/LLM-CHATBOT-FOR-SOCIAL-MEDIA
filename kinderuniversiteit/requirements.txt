@@ -1,0 +1,41 @@
+# ── Web framework ──────────────────────────────────────────────────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.12        # file upload support (knowledge base ingestion)
+
+# ── Pydantic / settings ────────────────────────────────────────────────────────
+pydantic==2.10.3
+pydantic-settings==2.6.1
+
+# ── Database ───────────────────────────────────────────────────────────────────
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0                 # async PostgreSQL driver
+alembic==1.14.0
+
+# ── AI / LLM ──────────────────────────────────────────────────────────────────
+openai==1.57.2                  # Chat Completions API (OpenAI / compatible providers)
+anthropic>=0.40.0               # Anthropic Claude SDK
+chromadb==0.5.23                # vector store
+sentence-transformers>=3.0.0    # multilingual embeddings for ChromaDB (paraphrase-multilingual-MiniLM-L12-v2)
+tenacity==9.0.0                 # retry / exponential backoff
+
+# ── Cache ──────────────────────────────────────────────────────────────────────
+redis[hiredis]==5.2.1           # async Redis client (rate limiting, caching)
+
+# ── HTTP ───────────────────────────────────────────────────────────────────────
+httpx==0.28.1                   # async HTTP — used by openai SDK internally
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+structlog==24.4.0
+
+# ── Templating ────────────────────────────────────────────────────────────────
+jinja2==3.1.4
+
+# ── Document processing ────────────────────────────────────────────────────────
+pypdf==5.1.0                    # PDF text extraction for knowledge-base ingestion
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dotenv==1.0.1            # .env file loading (also handled by pydantic-settings)
+
+# ── Dev / test (not installed in production Docker image) ─────────────────────
+# Install separately: pip install -r requirements-dev.txt
