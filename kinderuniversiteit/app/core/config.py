@@ -57,7 +57,7 @@ class Settings(BaseSettings):
     # Primary log-level control.  Also used as the structlog filtering level.
     app_log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
     # Must be a strong random value ≥ 32 chars in production.
-    secret_key: str
+    secret_key: str = "dev-secret-key-change-in-production-please"
 
     # ── Logging ───────────────────────────────────────────────────────────────
     # "json"  → machine-readable JSON (always used in production)
@@ -77,14 +77,14 @@ class Settings(BaseSettings):
     chroma_persist_dir: Path = Path("data/chroma")   # embedded ChromaDB only
 
     # ── Database ──────────────────────────────────────────────────────────────
-    database_url: PostgresDsn
+    database_url: PostgresDsn | None = None
     database_pool_size: int = 10
     database_max_overflow: int = 20
     # Set True only for local debugging; never in production (logs every query).
     database_echo: bool = False
 
     # ── OpenAI ───────────────────────────────────────────────────────────────
-    openai_api_key: str
+    openai_api_key: str = ""
     # Optional base URL — override to use any OpenAI-compatible provider.
     # e.g. Google Gemini: https://generativelanguage.googleapis.com/v1beta/openai/
     # Leave empty to use the default OpenAI endpoint.
@@ -110,7 +110,7 @@ class Settings(BaseSettings):
     manychat_base_url: str = "https://api.manychat.com"
 
     # ── Redis ─────────────────────────────────────────────────────────────────
-    redis_url: RedisDsn
+    redis_url: RedisDsn | None = None
     cache_ttl_seconds: int = 300
 
     # ── Rate limiting ─────────────────────────────────────────────────────────
@@ -141,8 +141,7 @@ class Settings(BaseSettings):
     @field_validator("openai_api_key")
     @classmethod
     def _validate_openai_key(cls, v: str) -> str:
-        if not v:
-            raise ValueError("OPENAI_API_KEY must not be empty")
+        # Allow empty key in development/demo mode; warn in production via model validator.
         return v
 
     @field_validator("openai_temperature")
@@ -270,8 +269,8 @@ class Settings(BaseSettings):
             visible = min(6, max(0, len(v) - 4))
             return v[:visible] + "***"
 
-        db_url = str(self.database_url)
-        redis_url = str(self.redis_url)
+        db_url = str(self.database_url) if self.database_url else "<not set>"
+        redis_url = str(self.redis_url) if self.redis_url else "<not set>"
         db_url_safe = re.sub(r"://[^:@/]+:[^@/]+@", "://<redacted>@", db_url)
         redis_url_safe = re.sub(r"://[^:@/]+:[^@/]+@", "://<redacted>@", redis_url)
 
