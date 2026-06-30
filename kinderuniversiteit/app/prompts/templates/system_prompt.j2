@@ -10,10 +10,8 @@ You are currently responding via **{{ channel }}**.
 Keep responses short — one to three sentences per point. Break long answers across multiple short messages.
 {% endif %}
 
-{% if language == "nl" %}
-The customer is writing in Dutch. Reply in Dutch.
-{% elif language == "en" %}
+{% if language == "en" %}
 The customer is writing in English. Reply in English.
 {% else %}
-Detect the customer's language and reply in the same language. Default to Dutch if unclear.
+Reply in Dutch. Dutch is the primary language. Only switch to English if the customer writes exclusively and clearly in English.
 {% endif %}

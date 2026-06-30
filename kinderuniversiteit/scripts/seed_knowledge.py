@@ -85,10 +85,15 @@ KNOWLEDGE_CHUNKS: list[tuple[str, str, dict]] = [
         "registration-process",
         (
             "Inschrijven voor een vakantieprogramma of cursus:\n"
-            "1. Ga naar www.kinderuniversiteit.nl en kies het gewenste programma.\n"
-            "2. Vul het inschrijfformulier in met naam, leeftijd en contactgegevens.\n"
-            "3. Kies een betaalmethode en rond de betaling af.\n"
-            "4. Je ontvangt binnen 24 uur een bevestigingsmail met alle details.\n"
+            "Gebruik het officiële inschrijfformulier via deze link:\n"
+            "https://forms.office.com/r/QGWdkT61aJ\n\n"
+            "Stappen:\n"
+            "1. Open het inschrijfformulier: https://forms.office.com/r/QGWdkT61aJ\n"
+            "2. Vul de naam, leeftijd en contactgegevens van je kind in.\n"
+            "3. Kies het gewenste programma en de gewenste week.\n"
+            "4. Kies een betaalmethode en rond de betaling af.\n"
+            "5. Je ontvangt binnen 24 uur een WhatsApp-bevestiging met alle details.\n"
+            "Je kunt ook meer informatie vinden op onze website: www.kinderuniversiteit.com\n"
             "Inschrijving is definitief na ontvangst van de betaling. "
             "Bij populaire kampen geldt aanmelding op volgorde van binnenkomst."
         ),
@@ -117,7 +122,7 @@ KNOWLEDGE_CHUNKS: list[tuple[str, str, dict]] = [
             "• Minder dan 2 weken voor aanvang: geen restitutie.\n"
             "• Bij annulering door Kinderuniversiteit (bijv. te weinig aanmeldingen): "
             "volledige terugbetaling zonder administratiekosten.\n"
-            "Annuleren doe je via info@kinderuniversiteit.nl met vermelding van naam en programma."
+            "Annuleren doe je via info@kinderuniversiteit.com met vermelding van naam en programma."
         ),
         {"source_file": "annuleringsbeleid.md", "page_number": 1, "category": "policy"},
     ),
@@ -152,15 +157,28 @@ KNOWLEDGE_CHUNKS: list[tuple[str, str, dict]] = [
         {"source_file": "zomerkamp-2025.md", "page_number": 1, "category": "camps"},
     ),
 
+    # ── Website ───────────────────────────────────────────────────────────────
+    (
+        "website-url",
+        (
+            "De officiële website van Kinderuniversiteit is: www.kinderuniversiteit.com\n"
+            "Website adres / link / URL: https://www.kinderuniversiteit.com\n"
+            "Op de website vind je alle informatie over programma's, vakantieprogramma's, "
+            "cursussen, locaties en prijzen. Je kunt ook direct inschrijven via de website "
+            "of via het inschrijfformulier: https://forms.office.com/r/QGWdkT61aJ"
+        ),
+        {"source_file": "website.md", "page_number": 1, "category": "contact"},
+    ),
+
     # ── Contact & support ─────────────────────────────────────────────────────
     (
         "contact-info",
         (
             "Contact Kinderuniversiteit:\n"
-            "• E-mail algemeen: info@kinderuniversiteit.nl\n"
-            "• E-mail inschrijvingen: aanmeldingen@kinderuniversiteit.nl\n"
+            "• E-mail algemeen: info@kinderuniversiteit.com\n"
+            "• E-mail inschrijvingen: aanmeldingen@kinderuniversiteit.com\n"
             "• Telefoon: 020 123 4567 (ma-vr 9:00-17:00)\n"
-            "• Website: www.kinderuniversiteit.nl\n"
+            "• Website: www.kinderuniversiteit.com\n"
             "• Social media: @kinderuniversiteit op Instagram, Facebook en WhatsApp\n"
             "Voor dringende zaken tijdens een kamp: gebruik het noodnummer op de bevestigingsmail."
         ),
@@ -217,6 +235,21 @@ KNOWLEDGE_CHUNKS: list[tuple[str, str, dict]] = [
             "of Engels is voldoende om te kunnen deelnemen."
         ),
         {"source_file": "veelgestelde-vragen.md", "page_number": 3, "category": "faq"},
+    ),
+
+    # ── Social media ──────────────────────────────────────────────────────────
+    (
+        "social-media",
+        (
+            "Kinderuniversiteit is actief op de volgende sociale media:\n"
+            "Facebook: facebook.com/kinderuniversiteit\n"
+            "LinkedIn: linkedin.com/company/kinderuniversiteit\n"
+            "Instagram: instagram.com/kinderuniversiteit\n"
+            "Volg ons voor nieuws over nieuwe programma's, foto's van onze kampen en updates. "
+            "Je kunt ook via Facebook Messenger of Instagram Direct berichten sturen. "
+            "Website: www.kinderuniversiteit.com"
+        ),
+        {"source_file": "socials.md", "page_number": 1, "category": "contact"},
     ),
 ]
 

@@ -1,0 +1,47 @@
+# Environment & secrets — NEVER commit these
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# ChromaDB data (large binary files, seeded on deploy)
+data/chroma/
+
+# Knowledge base source files (uploaded separately)
+data/knowledge/
+
+# Logs
+logs/
+*.log
+
+# Node / Next.js
+node_modules/
+.next/
+*.tsbuildinfo
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Videos
+video/
